@@ -6,19 +6,13 @@ import { useEffect, useState } from 'react';
 export default function ThemeSwitcher() {
   const [mounted, setMounted] = useState(false);
   const { setTheme, theme, resolvedTheme } = useTheme();
-
   useEffect(() => {
     setMounted(true);
   }, []);
 
   if (!mounted) {
-    return (
-      <div className="p-2 rounded-lg bg-gray-100 dark:bg-slate-800 w-9 h-9 flex items-center justify-center">
-        <div className="w-5 h-5"></div>
-      </div>
-    );
+    return null;
   }
-
   // Use resolvedTheme to get the actual theme (handles 'system' theme)
   // resolvedTheme can be undefined initially, so we check both
   const currentTheme = resolvedTheme || theme;
